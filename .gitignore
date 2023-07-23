@@ -7,4 +7,4 @@ _site/
 vendor/
 # 내가 추가한 거
 Gemfile.lock
-.SD_Store
+**/.DS_Store
