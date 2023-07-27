@@ -1,0 +1,20 @@
+---
+layout: default
+title: Blog
+---
+<h1> Latest Posts</h1>
+
+<ul>
+    {% for post in site.posts %}
+        <li>
+            <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+            <p>{{ post.excerpt }}</p>
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 
+    post.url의 경로는 jekyll에 의해 자동으로 설정됨
+    post.title은 게시물 파일이름에서 가져오고, 원하면 title머리말에서 재정의 할 수 있음
+    post.excerpt는 기본적으로 콘텐츠의 첫번째 단락 ??
+-->

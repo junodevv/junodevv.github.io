@@ -1,22 +1,7 @@
 ---
-title: "junodevv Blog"
+layout: default
+title: About
 ---
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>{{ page.title }}</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-  </style>
-</head>
-<body>
-	<h1>{{ page.title }}</h1>
-	<br>
-	<p class="p1"><span class="s1">Hello World !!!</span></p>
-</body>
-</html>
+# About page
+
+This page tells you a little bit about me.

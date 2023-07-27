@@ -1,0 +1,21 @@
+---
+layout: default
+title: Staff
+---
+<h1>Staff</h1>
+
+<ul>
+    {% for author in site.authors %}
+    <li>
+        <h2>{{ author.name }}</h2>
+        <h3>{{ author.position}}</h3>
+        <p>{{author.content | markdownify }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<!-- 
+    markdownify = 콘텐츠가 마크다운이라서 필터링을 한다는데?? 몬솔?
+    _site안에 생성된 authors를 참조하는듯, 
+    _site에 기존에 적놓은 md나 scss를  html이나 css 으로 변환해서 놓고 그것을 가지고 사이트를 구성하는 거같음
+ -->
