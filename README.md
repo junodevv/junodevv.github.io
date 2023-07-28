@@ -310,11 +310,15 @@ position: backend-engineer
 ```
 ... ted 등등 여러명 추가
 
+3. 작성자 페이지
+
 그리고 작성자 페이지를 만들어서 아까 블로그 만들듯이 만들면 되는데 나는 이게 필요없으니 내 블로그에서는 생략할것이지만
 
 일단해보자
 
-ex) author.html
+author.html을 생성하면 **site.authors**로 사용할 수 있대
+
+ex) staff.html
 
 ```html
 ---
@@ -322,11 +326,97 @@ layout: default
 title: Staff
 ---
 <h1>Staff</h1>
+
 <ul>
-	{% for author in site.authors %}	
+    {% for author in site.authors %}
+    <li>
+        <h2>{{ author.name }}</h2>
+        <h3>{{ author.position}}</h3>
+        <p>{{author.content | markdownify }}</p>
+    </li>
+    {% endfor %}
 </ul>
+
+<!-- 
+    markdownify = 콘텐츠가 마크다운이라서 필터링을 한다? {{content}}레이아웃에서 사용하여 출력할때 자동으로 발생
+    _site안에 생성된 authors를 참조하는듯, 
+    _site에 기존에 적놓은 md나 scss를  html이나 css 으로 변환해서 놓고 그것을 가지고 사이트를 구성하는 거같음
+ -->
 ```
 
+4. 네비게이션에 작성자 html 추가해주기
 
+```yml
+...
+- name: Staff
+  link: /staff.html
+```
 
+5. 페이지 출력
 
+기본적으로 컬렉션은 문서페이지를 출력하지 않는다. 
+
+출력하고 싶은 경우각 작성자가 자신의 페이지를 갖도록 하므로 컬렉션의 구성을 조정한다.??
+
+_config.yml -> Output: true 추가
+
+```yml
+collections:
+  authors: 
+    output: true
+```
+
+이렇게 하면 출력페이지여 연결을 할 수 있다. author.url을 사용할 수 있게됨
+
+```html
+...
+<h2><a href="{{ author.url }}">{{ author.name }}</a></h2>
+...
+ <!-- 
+    author.url은 _config.yml에서 output: true 옵션을 추가 함으로써 사용가능해진 url이다.
+  -->
+```
+
+_layouts/author.html ( author 레이아웃 생성 )
+
+```html
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<h2>{{ page.position }}</h2>
+
+{{ content }}
+```
+
+6. 머리말 기본값 설정하기 
+
+머리말 기본값을 설정하면 각각의 html의 머리말에 설정하지 않아도된다.
+
+_config.yml
+
+```yml
+collections:
+  authors: 
+    output: true
+
+# 머리말 기본값 설정
+defaults:
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+```
+
+이렇게 하면 각 html에 머리말에 지정하지 않아도 default로 지정할 수 있다.
+범위와 타입을 설정?

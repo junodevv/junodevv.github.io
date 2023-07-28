@@ -7,7 +7,7 @@ title: Staff
 <ul>
     {% for author in site.authors %}
     <li>
-        <h2>{{ author.name }}</h2>
+        <h2><a href="{{ author.url }}">{{ author.name }}</a></h2>
         <h3>{{ author.position}}</h3>
         <p>{{author.content | markdownify }}</p>
     </li>
@@ -19,3 +19,6 @@ title: Staff
     _site안에 생성된 authors를 참조하는듯, 
     _site에 기존에 적놓은 md나 scss를  html이나 css 으로 변환해서 놓고 그것을 가지고 사이트를 구성하는 거같음
  -->
+ <!-- 
+    author.url은 _config.yml에서 output: true 옵션을 추가 함으로써 사용가능해진 url이다.
+  -->
