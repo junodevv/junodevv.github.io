@@ -1,4 +1,35 @@
+// 메인화면(index) 제목(junodevv) 가운데 정렬
+.main-title{
+    text-align: center;
+
+}
+
+/* navigation */
+
+// 네비게이션에서 선택된 애 속성
 .current{
     color: green;
+    font-weight: bold;
+
+}
+// 네비게이션 속성
+.nav-box{
     margin: 10px
+}
+// 네비게이션 속성 2
+nav{
+    float: right;
+    margin: 10px
+}
+// 부모 자식관계를 지정해서 내가 원하는 a 태그만 속성을 바꿀수 있다
+nav > span > a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/* footer */
+
+footer > ul > li{
+    
 }
