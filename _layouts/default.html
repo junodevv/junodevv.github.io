@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <title>{{ page.title }}</title>
 <link rel="stylesheet" href="/assets/css/styles.css"> 
-<!-- jekyll이 scss를 css로 생성하기 때문에 css로 참조하면 된다. -->
+<!-- jekyll이 빌드할 때 scss를 css로 생성하기 때문에 css로 참조하면 된다. -->
+{% feed_meta %}
+{% seo %}
 </head>
 <body>
 	{% include navigation.html %}

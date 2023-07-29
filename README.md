@@ -3,6 +3,17 @@
 
 # How To Write Jekyll
 
+## 0. jekyll에 대해서
+
+1. 빌드(Build)와 배포(Deploy)
+Build 란 어플리케이션이 동작할 수 있도록 컴파일 또는 변환하는 작업이다.
+
+예를 들어 java가 웹어플리케이션을 만들떄 War 파일로 만들어 지는 과정이 Build 이다.
+
+jekyll에서는 HTML(<-MD), CSS(<-SCSS), Javascript 파일이 _site폴더에 생성되는 과정을 Build 라고 한다.
+
+
+
 ## 1. Jekyll 의 구조
 |-- _data (페이지 구성요소, Ex member.yml -> site.data.members 로 사용)
 
@@ -419,4 +430,196 @@ defaults:
 ```
 
 이렇게 하면 각 html에 머리말에 지정하지 않아도 default로 지정할 수 있다.
-범위와 타입을 설정?
+범위와 타입을 설정? -> 차차 알아가도록하자
+
+7. 작성자의 게시글 나열( 해당 작성자가 작성한글 모아보기 생성)
+
+_layout/author.html
+
+```html
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<h2>{{ page.position }}</h2>
+
+{{ content }}
+
+<h2>Posts</h2>
+<ul>
+    {% assign filtered_posts = site.posts | where: 'author', page.name %}
+    {% for post in filtered_posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+<!-- 
+	assign = 변수 선언함수같은거 ex) 선언: {%assign 변수명 = 넣을_값 %}
+								사용: {{ 변수명 }}
+	그니까 filtered_posts에 site.posts를 넣는데 조건이 'author'가 page.name 인 site.posts 인것
+ -->
+```
+
+8. 저자 페이지 링크
+
+작성자 페이지에 연결하기 
+
+_layouts/post.html -> 변경
+
+```html
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<p>
+    {{ page.date | date_to_string }}
+    {% assign author = site.authors | where: 'name', page.author | first %}
+    {% if author %}
+     - <a href="{{ author.url }}">{{ author.name }}</a>
+    {% endif %}
+</p>
+
+{{ content }}
+```
+
+## 10. 배포
+
+1. Gemfile
+
+Gemfile이 있어서 jekyll이나 gem의 버전이 다른 환경에서도 일관되게 유지될 수 있다.
+
+Gemfile에 직접 " gem 'jekyll' " 같이 라이브러리? 이름을 작성해놓고 
+
+```
+bundle install 
+```
+터미널에서 위 명령어를 실행하면 gem을 설치하고 Gemfile.lock 을 생성하여 현재 gem버전을 잠근다.
+
+gemfile이 변경된 경우
+```
+bundle update
+```
+를 실행하여  업데이트 할 수 있다.
+
+2. 플러그인
+
+- jekyll-sitemap 
+
+-> 검색엔진이 내 웹사이트를 찾을 수 있도록 내 웹사이트의 크롤링 및 색인을 돕는 페이지 목록 같은 것.
+
+-> 웹 크롤링 로봇이 이용할 수 있는 웹사이트의 접근 가능한 페이지의 목록
+
+- jekyll-feed 
+
+-> 게시물에 대한 RSS 피드를 만든다
+
+-> RSS? Rich Site Summary? Real Simple Syndication?
+
+-> RSS = 사이트피드, 새 글들을 뽑아서 하나의 파일로 만들어 놓은 것 -> 구글, 네이버 등의 검색엔진에 이 RSS를 전달 해주면 검색목록에 내 새글들을 제공해준다.
+
+[RSS 참고사이트](https://4343282.tistory.com/164)
+
+- jekyll-seo-tag
+
+-> 검색엔진 최적화를 위해 사용되는 메타 태그들
+
+-> SEO = Search-Engine Optimization : 메타 태그를 이용해서 웹페이지 관련 설명을 추가하거나 URL에 검색어가 될 수 있는 단어를 노출해서 검색 엔진의 검색결과의 상위에 노출되는 확률을 높이는 것
+
+[참고사이트: 검색엔진에 블로그 등록하기](https://gmlwjd9405.github.io/2017/10/21/include-blog-in-a-NaverSearchEngine.html)
+
+위의 3가지 플러그인 추가하는 법
+
+Gemfile 에 설치할 플러그인들 추가
+
+```ruby
+source "https://rubygems.org"
+
+gem "jekyll"
+
+group :jekyll_plugins do
+    gem 'jekyll-sitemap'
+    gem 'jekyll-feed'
+    gem 'jekyll-seo-tag'
+end
+```
+
+_config.yml에 플러그인 항목 추가
+
+```yml
+...
+# 플러그인 항목
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+```
+
+이후 bundle update 실행
+
+이제 sitemap은 따로 설정할 필요없이 빌드할때 알아서 사이트맵을 생성하고
+
+feed와 seo-tag는 태그를 추가해 줘야한다.
+
+_layouts/default.html
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{{ page.title }}</title>
+<link rel="stylesheet" href="/assets/css/styles.css"> 
+{% feed_meta %} ****
+{% seo %} ****
+</head>
+<body>
+	{% include navigation.html %}
+	{{ content }}
+</body>
+</html>
+```
+
+이렇게 작성하고 http://localhost:4000 에서 페이지 소스를 확인해보면
+```html
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" />
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>junodevv Blog</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="junodevv Blog" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="junodevv Blog" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","headline":"junodevv Blog","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+```
+이게 추가된걸 확인할 수 있었다.
+
+3. Environments
+
+아무에게나 보여주고 싶지는 않지만 개발과정에서는 보고싶은 출력결과가 있다면 그걸 Environments를 통해서 설정할수 있다고 하는거 같은데 
+
+예를 들면 분석 스크립트(analytics script)
+
+ex)
+```
+JEKYLL_ENV=production bundle exec jekyll build
+```
+이걸 사용하면 jekyll.environment라는 liquid 를 사용할 수 있다.
+
+그리고 JEKYLL_ENV에서 접속했을때만 분석 스크립트를 출력하려면
+
+```html
+{% if jekyll.environment == "production" %}
+	<script src="my-analytics-script.js"></script>
+{% endif %}
+```
+환경이 production일때만 분석 스크립트를 보여주는 코드인가봐 default에 써주면 되나?
+
+4. 전개
+
+마지막 단계가 _site를 production 서버로 가져오는 거라는데 이게 몬솔
+
+더 나은 방법은 CI 또는 타사의 프로그램을 써서 자동화 하라는데
