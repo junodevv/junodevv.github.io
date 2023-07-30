@@ -1,3 +1,9 @@
+/* 전체 설정 */
+
+// *, body, html {
+//     margin: 0;
+//     padding: 0;
+// }
 // 메인화면(index) 제목(junodevv) 가운데 정렬
 .main-title{
     text-align: center;
@@ -27,9 +33,35 @@ nav > span > a{
     color: black;
 }
 
-
 /* footer */
 
-footer > ul > li{
-    
+// footer구역 설정
+footer{
+    background-color: #CEE3F6;
+    width: 100%;
+    bottom: 0px;
+    padding: 0%;
+    border: 0%;
+    position: absolute;
+}
+// 베너 속성
+.footer-banner{
+   padding: 30px;
+}
+// footer에서 베너+네비들 속성(정렬)
+.footer-banner-nav{
+    display: flex;                  // 정렬을 위한 display 로 다양한 속성으로 정렬을 돕는다. 
+    justify-content: space-around;  // flex 속성, 각 컨텐츠들이 양쪽으로 동일한 간격을 유지하게 정렬해줌
+    align-items: center;            // flex 속성, 각 건텐츠들을 중앙으로 정렬해준다.(수직)
+}
+//copyright 속성
+.footer-copyright{
+    padding: 0px 0px 30px 50px;
+}
+// footer 에 <a> 들 속성
+.footer-astyle{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+    font-weight: bold;
 }

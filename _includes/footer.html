@@ -1,10 +1,13 @@
 <footer>
-        <div>
-            <ul>
-                <li>GitHub</li>
-                <li>Email</li>
-                <li>RSS</li>
-            </ul>
-        </div>
-        <div>© 2023 junodevv. powered by kekyll</div>
+    <div class="footer-banner-nav">
+        <span class="footer-banner">
+            <h1>junodevv</h1>
+        </span>
+        {% for item in site.data.footer %}
+        <span>
+                <a href="{{item.link}}" class="footer-astyle">{{ item.name }}</a>
+        </span>
+        {% endfor %}
+    </div>
+    <div class="footer-copyright">© 2023 junodevv powered by jekyll</div>
 </footer>
