@@ -2,7 +2,11 @@
   link: /
 - name: About
   link: /about.html
-- name: Blog
+- name: Post
   link: /blog.html
+- name: GitHub
+  link: https://github.com/junodevv
+- name: Project
+  link: /project.html
 - name: Staff
   link: /staff.html

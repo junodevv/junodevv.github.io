@@ -1,20 +1,35 @@
 /* 전체 설정 */
 
-// *, body, html {
-//     margin: 0;
-//     padding: 0;
-// }
+body {
+    font-family: 'Apple SD Gothic Neo','Malgun Gothic', arial, sans-serif;
+    left: 0;
+    margin: 0px;
+}
+
 // 메인화면(index) 제목(junodevv) 가운데 정렬
 .main-title{
     text-align: center;
 
 }
 
-/* navigation */
-
+/////////////////* navigation *///////////////////
+.nav-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;   
+    padding: 8px 8px 0px 8px;
+}
+.nav-banner{
+    font-size: 30px;
+    font-weight: bold;
+}
+.nav-banner-a-style{
+    text-decoration: none;
+    color: black;
+}
 // 네비게이션에서 선택된 애 속성
 .current{
-    color: green;
+    color: skyblue;
     font-weight: bold;
 
 }
@@ -33,8 +48,7 @@ nav > span > a{
     color: black;
 }
 
-/* footer */
-
+/////////////////* footer */////////////////
 // footer구역 설정
 footer{
     background-color: #CEE3F6;
@@ -42,11 +56,12 @@ footer{
     bottom: 0px;
     padding: 0%;
     border: 0%;
-    position: absolute;
+    position: relative;
 }
-// 베너 속성
+// 베너 속성 상우하좌
 .footer-banner{
-   padding: 30px;
+   padding: 30px 30px 30px 0px;
+
 }
 // footer에서 베너+네비들 속성(정렬)
 .footer-banner-nav{
@@ -56,7 +71,7 @@ footer{
 }
 //copyright 속성
 .footer-copyright{
-    padding: 0px 0px 30px 50px;
+    padding: 0px 0px 10px 50px;
 }
 // footer 에 <a> 들 속성
 .footer-astyle{
@@ -64,4 +79,25 @@ footer{
     color: black;
     font-size: large;
     font-weight: bold;
+}
+
+////////////////* main */////////////////
+//main(aside, section) 전체 설정
+hr{
+    width: 98%
+}
+.main-wrap{
+    display: flex;
+    padding: 8px;
+}
+// 카테고리 속성 설정
+.main-aside-category{
+    width: 150px;
+    overflow-y: auto;
+    max-height: calc(100vh - 2em - 2em);
+}
+// 프로필 사진 속성
+.profile{
+    width: 130px;
+    border-radius: 50%;
 }

@@ -1,6 +1,9 @@
 - name: GitHub
   link: https://github.com/junodevv
+  icon: assets/images/githubicon.png
 - name: Email
   link: mailto:zhqkfxm0127@naver.com
+  icon: assets/images/emailicon.png
 - name: RSS
   link: /feed.xml
+  icon: assets/images/RSSicon.png

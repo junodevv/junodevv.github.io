@@ -1,4 +1,8 @@
-<nav>
+<div class="nav-wrap">
+	<div class="nav-banner">
+		<a href="/" class="nav-banner-a-style">Junodevv Blog</a>
+	</div>
+	<nav>
 	{% for item in site.data.navigation %}
 		<span class="nav-box">
 			<a href="{{ item.link }}"
@@ -7,4 +11,5 @@
 			</a>
 		</span>
 	{% endfor %}
-</nav>
+	</nav>
+</div>
