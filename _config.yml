@@ -22,3 +22,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+
+links:
+  - name: post
+    link: /post.html

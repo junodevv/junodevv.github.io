@@ -1,6 +1,28 @@
 ---
 title: "junodevv Blog"
 ---
-<h1 class="main-title">{{ page.title }}</h1>
-<br>
-<p>junodevv Blog</p>
+<div class="section-wrap">
+    <div class="section-posts">
+        <div class="section-contents-title-wrap">
+            <h1>Latest Posts</h1>
+            <a href="/post.html">more</a>
+        </div>
+        <ul class="list-style">
+            {% for post in site.posts limit: 2 %}
+                <li>
+                    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                    <p>{{ post.excerpt }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="section-aboutme">
+        <h1>AboutMe</h1>
+    </div>
+    <div class="section-github">
+        <h1>GitHub</h1>
+    </div>
+    <div class="section-project">
+        <h1>Project</h1>
+    </div>
+</div>

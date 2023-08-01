@@ -3,7 +3,7 @@
 - name: About
   link: /about.html
 - name: Post
-  link: /blog.html
+  link: /post.html
 - name: GitHub
   link: https://github.com/junodevv
 - name: Project

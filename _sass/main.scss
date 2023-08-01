@@ -8,10 +8,13 @@ body {
 
 // 메인화면(index) 제목(junodevv) 가운데 정렬
 .main-title{
-    text-align: center;
+    text-align: left;
 
 }
-
+// list <li> 점 없애기
+.list-style{
+    list-style-type: none;
+}
 /////////////////* navigation *///////////////////
 .nav-wrap{
     display: flex;
@@ -90,9 +93,11 @@ hr{
     display: flex;
     padding: 8px;
 }
+.main-aside{
+    width: 150px;
+}
 // 카테고리 속성 설정
 .main-aside-category{
-    width: 150px;
     overflow-y: auto;
     max-height: calc(100vh - 2em - 2em);
 }
@@ -100,4 +105,24 @@ hr{
 .profile{
     width: 130px;
     border-radius: 50%;
+}
+
+//section
+section{
+    margin-left: 8px;
+}
+.section-posts{
+    width: 50vw;
+    height: auto;
+}
+.section-contents-title-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.aside-list-style{
+    padding-inline-start: 15px;
+}
+.section-a-more{
+
 }
