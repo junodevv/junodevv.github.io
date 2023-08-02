@@ -6,21 +6,17 @@
             <p>Backend Engineer <br> 취준생 <br> 이준오의 블로그</p>
         </div>
         <div class="main-aside-category">
-            <h3>Category</h3>
+            <h3><a href="/category.html" class="a-style-none">Category</a></h3>
             <ul class="list-style aside-list-style">
-                <li> Algorithm </li>
-                <li> Computer Science </li>
-                <li> SQL </li>
-                <li> Java </li>
-                <li> Spring </li>
-                <li> HTML/CSS </li>
-                <li> Linux </li>
-                <li> C </li>
-                <li> cloud</li>
+                {% for category in site.categories %}
+                <li><a href="{{ category.url }}" class="a-style-none">{{ category.name }}</a></li>
+                {% endfor %}
             </ul>
         </div>     
     </aside>
+
     <!-- section -->
+    
     <section>
         {{ content }}
     </section>

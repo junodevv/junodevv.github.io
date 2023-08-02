@@ -1,6 +1,8 @@
 collections:
   authors: 
     output: true
+  categories:
+    output: true
 # 머리말 기본값 설정
 defaults:
   - scope:
@@ -8,6 +10,11 @@ defaults:
       type: "authors"
     values:
       layout: "author"
+  - scope:
+      path: ""
+      type: "categories"
+    values:
+      layout: "category-layout"
   - scope:
       path: ""
       type: "posts"
@@ -24,5 +31,4 @@ plugins:
   - jekyll-seo-tag
 
 links:
-  - name: post
-    link: /post.html
+  about: /about.html
