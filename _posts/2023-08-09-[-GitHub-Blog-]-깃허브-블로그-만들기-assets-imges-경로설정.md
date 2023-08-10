@@ -1,6 +1,6 @@
 ---
-category: GitHub
-tags: ['github', blog]
+category: GitHub Blog
+tags: ['github', 'blog']
 ---
 default의 이미지가 md로 작성된 파일에서는 보이지 않는 문제 해결
 
@@ -27,14 +27,14 @@ default의 이미지가 md로 작성된 파일에서는 보이지 않는 문제 
 - index.html
 
 > <img width="500" alt="Pasted Graphic 3" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/7e960efe-4229-4eef-8db0-99a10609783b">
-
+>
 > 경로: https://junodevv.github.io/assets/images/githubicon.png
 
 
 - _posts/2023-07-27-third
 
 > <img width="500" alt="Pasted Graphic 5" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/47197c0a-76fd-4e9d-8d19-40da8017e1ae">
-
+>
 > 경로: https://junodevv.github.io/test/2023/07/27/assets/images/githubicon.png
 
 이렇게 적용된 경로가 다르게 나타남을 알 수 있었다.
@@ -50,9 +50,9 @@ md으로 작성된 페이지는 https://junodevv.github.io 뒤에 카테고리�
 ./, ../ 를 막 넣어보다보니 
 
 > <img width="400" alt="Pasted Graphic 6" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/63e6c2f6-1a59-4491-88f3-05a51a9d5452">
-
+>
 > <img width="571" alt="Pasted Graphic 7" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/a32e8a7c-e6a1-468c-97e6-5cf42c3e7671">
-
+>
 > 경로: http://127.0.0.1:4000/test/2023/07/assets/images/githubicon.png
 
  "../"를 사용하면 경로가 사진 처럼 1단계 상위 폴더의 위치를 가리킨다는 것을 알게 되었다.

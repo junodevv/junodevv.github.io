@@ -1,5 +1,5 @@
 ---
-category: GitHub
+category: GitHub Blog
 tags: github
 ---
 깃허브 블로그를 만들고 있는데 문제를 발견했다.

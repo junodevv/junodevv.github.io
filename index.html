@@ -11,7 +11,7 @@ title: "Junodevv Blog"
             {% for post in site.posts limit: 2 %}
                 <li>
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                    <p>{{ post.excerpt }}</p>
+                    <p>{{ post.excerpt }} </p>
                 </li>
             {% endfor %}
         </ul>
@@ -20,7 +20,7 @@ title: "Junodevv Blog"
     <div class="section-contents">
         <div class="section-contents-title-wrap">
             <h1>AboutMe</h1>
-            <a href="site.links.about">more</a>
+            <a href="{{ data.navigation.About.link }}">more</a>
         </div>
         <div>
              <p>lee jun o</p>

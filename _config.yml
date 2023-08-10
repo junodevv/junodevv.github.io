@@ -29,6 +29,3 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-
-links:
-  about: /about.html
