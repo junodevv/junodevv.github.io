@@ -12,7 +12,19 @@
                 <li><a href="{{ category.url }}" class="a-style-none">{{ category.name }}</a></li>
                 {% endfor %}
             </ul>
-        </div>     
+        </div> 
+        <div class="main-aside-tags">
+            {% include tag.html %}
+            <h3>
+                <img src="../../../../assets/images/tagicon.png" width="15px">
+                <a href="/tags/" class="a-style-none">Tags</a>
+            </h3>
+            <ul class="list-style aside-list-style">
+                {% for tag in tags%}
+                <li><a href="/tags/#{{tag}}" class="a-style-sky">{{tag}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </aside>
 
     <!-- section -->

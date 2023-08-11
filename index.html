@@ -12,6 +12,15 @@ title: "Junodevv Blog"
                 <li>
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <p>{{ post.excerpt }} </p>
+                    <p>
+                        {{ post.date | date: "%y/%m/%d"}}
+                        {% if post.tags %}
+                         | <img src="../../../../assets/images/tagicon.png" width="15px">
+                            {% for tag in post.tags %}
+                                #{{ tag }}
+                            {% endfor %}
+                        {% endif %}
+                    </p>
                 </li>
             {% endfor %}
         </ul>
@@ -20,7 +29,7 @@ title: "Junodevv Blog"
     <div class="section-contents">
         <div class="section-contents-title-wrap">
             <h1>AboutMe</h1>
-            <a href="{{ data.navigation.About.link }}">more</a>
+            <a href="/about.html">more</a>
         </div>
         <div>
              <p>lee jun o</p>

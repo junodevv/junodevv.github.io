@@ -24,6 +24,10 @@ blockquote{
     background-color: #ecf1f7;
     padding: 1rem 1rem 1rem 2rem;
 }
+.a-style-sky{
+    text-decoration: none;
+    color: #578aba;
+}
 /////////////////* navigation *///////////////////
 .nav-wrap{
     display: flex;
@@ -132,4 +136,9 @@ section{
 }
 .aside-list-style{
     padding-inline-start: 15px;
+}
+
+//////////////* tags *///////////////
+.tag-wrap{
+    width: 60vw;
 }

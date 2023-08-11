@@ -4,10 +4,20 @@ layout: default
 <h1>{{ page.title }}</h1>
 <p>
     {{ page.date | date_to_string }}
+
+    <!-- 이건 필요없지만 예시로 남겨두자 -->
     {% assign author = site.authors | where: 'name', page.author | first %}
     {% if author %}
      - <a href="{{ author.url }}">{{ author.name }}</a>
-    {% endif %}
+    {% endif %} 
+</p>
+<p>
+    {% if page.tags %}
+    <img src="../../../../assets/images/tagicon.png" width="15px">
+        {% for tag in page.tags %}
+            <a>#{{ tag }}</a>&nbsp; 
+        {% endfor %}
+    {% endif%}
 </p>
 <hr>
 {{ content }}

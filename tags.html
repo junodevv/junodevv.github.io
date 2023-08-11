@@ -1,0 +1,29 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+{% include tag.html %}
+
+<h1>{{page.title}}</h1>
+
+<div class="tag-wrap">
+  {% for tag in tags %}
+    <a class="a-style-sky" href="#{{ tag | slugify }}" >#{{ tag }}</a> &nbsp;
+  {% endfor %}
+  <hr class="divider">
+  {% for tag in tags %}
+  <h4 id="{{ tag | slugify }}">{{ tag }}</h4>
+  <ul>
+    {% for post in site.posts %}
+    {% if post.tags contains tag %}
+    <li>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="a-style-sky">
+          {{ post.title }}
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+  {% endfor %}
+</div>

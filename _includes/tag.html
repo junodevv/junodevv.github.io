@@ -1,0 +1,38 @@
+{% assign rawtags = "" %} <!-- rawtags 변수 선언, 비어있는 변수("") -->
+
+<!-- 블로그 파일 속 모든 posts 들에 대한 for문 -->
+{% for post in site.posts %} 
+{% assign ttags = post.tags | join:'|' | append:'|' %} 
+<!-- ttags에 각 post에 대한 tag들을 (post.tags라는 배열로)저장하고, 그 사이에 "|"를 추가한 문자열로 만듦(join) 맨뒤에도 "|" 를 추가 -->
+{% assign rawtags = rawtags | append:ttags %} <!-- 위에서 구한 ttags를 rawtags 변수에 추가 -->
+{% endfor %}
+<!-- 이 for문에서 모든 post들의 tags가 rawtags변수에 "tag1|tag2|tag3 ... tagN|" 이런문자열로 저장되어짐-->
+
+{% assign rawtags = rawtags | split:'|' | sort %}
+<!-- rawtags에 저장된 문자열이 "|"를 기준으로 배열로 변환되고 sort로 재 정렬됨 = 'tag1' 'tag2' 'tag2' 'tag3' ... 'tagN' -->
+{% assign tags = "" %}  <!-- tags변수 선언 -->
+
+<!-- rawtags의 요소를 item(tag)으로 하는 for문 -->
+{% for tag in rawtags %}
+{% if tag != "" %}                  <!-- tag(item)이 있고(비어있지 않고)-->
+{% if tags == "" %}                 <!-- tags가 비어있으면 -->
+{% assign tags = tag | split:'|' %} <!-- tags에 tag(item)을 대입하고 '|'로 구분하여 배열로 만든다.-->
+{% endif %}
+
+{% unless tags contains tag %} <!-- tags배열에 tag가 원소로 있지 않으면 -->
+{% assign tags = tags | join:'|' | append:'|' | append:tag | split:'|' %} 
+<!-- tags를 '|'를 포함한 문자열로 바꾸고 맨뒤에 |tag(item)을 추가하고 다시 배열로 변환 -->
+{% endunless %}
+{% endif %}
+{% endfor %}
+<!-- for문 끝 -->
+<!-- 결과: rawtags에서 중복을 제거함, tags= 'tag1' 'tag2' 'tag3' ... 'tagN' -->
+
+<!--
+    join : 배열을 문자열로 바꾸기
+    contains : 좌항의 String Array에 우항의 String이 원소로 있는지. 있으면 true, 없으면 false.
+    split: 문자열을 배열로 만들기
+    sort: 배열 정렬하기(대문자 > 소문자, a > z)
+    unless: if 의 반대, ~하지 않으면
+    slugify: 문자열을 소문자 URL로 변환 해주는 필터
+-->

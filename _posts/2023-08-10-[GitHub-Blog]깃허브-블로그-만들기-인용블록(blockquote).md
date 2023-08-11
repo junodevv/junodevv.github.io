@@ -1,7 +1,7 @@
 ---
 title: "[GitHub Blog]깃허브 블로그 만들기 인용블록(blockquote)"
 category: GitHub Blog
-tags: ['github', 'blog', 'blockquote']
+tags: github blog blockquote 인용블록
 ---
 마크다운형식으로 작성된 post에서 인용블록(blockquote)이 생기지 않는 문제 해결
 
