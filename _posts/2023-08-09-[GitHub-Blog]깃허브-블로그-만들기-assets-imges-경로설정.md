@@ -1,4 +1,5 @@
 ---
+title: "[GitHub Blog]깃허브 블로그 만들기 assets images 경로 설정"
 category: GitHub Blog
 tags: ['github', 'blog']
 ---

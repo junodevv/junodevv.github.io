@@ -119,9 +119,10 @@ hr{
 //section
 section{
     margin-left: 8px;
+    overflow-x: hidden;
 }
 .section-contents{
-    width: 50vw;
+    width: 60vw;
     height: auto;
 }
 .section-contents-title-wrap{

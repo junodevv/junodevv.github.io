@@ -8,7 +8,7 @@ title: "Junodevv Blog"
             <a href="/post.html">more</a>
         </div>
         <ul class="list-style">
-            {% for post in site.posts limit: 2 %}
+            {% for post in site.posts limit: 3 %}
                 <li>
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <p>{{ post.excerpt }} </p>
