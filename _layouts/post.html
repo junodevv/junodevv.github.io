@@ -15,7 +15,7 @@ layout: default
     {% if page.tags %}
     <img src="../../../../assets/images/tagicon.png" width="15px">
         {% for tag in page.tags %}
-            <a>#{{ tag }}</a>&nbsp; 
+            <a href="/tags/#{{tag}}" class="a-style-sky">#{{ tag }}</a>&nbsp; 
         {% endfor %}
     {% endif%}
 </p>
