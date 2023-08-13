@@ -1,5 +1,5 @@
 ---
-title: "[GitHub Blog]깃허브 블로그 만들기 인용블록(blockquote)"
+title: "[GitHub Blog]깃허브 블로그 만들기 - 인용블록(blockquote)"
 category: GitHub Blog
 tags: github blog blockquote 인용블록
 ---

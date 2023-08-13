@@ -1,5 +1,5 @@
 ---
-title: "[GitHub Blog] 깃허브 블로그 만들기 반응형 웹"
+title: "[GitHub Blog] 깃허브 블로그 만들기 - 반응형 웹"
 category: GitHub Blog
 tags: github
 ---
