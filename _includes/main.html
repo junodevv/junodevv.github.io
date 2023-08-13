@@ -6,7 +6,11 @@
             <p>Backend Engineer <br> 취준생 <br> 이준오의 블로그</p>
         </div>
         <div class="main-aside-category">
-            <h3><a href="/category.html" class="a-style-none">Category</a></h3>
+            <h3>
+                <a href="/category.html" class="a-style-none">
+                    <img src="../../../../assets/images/category-icon.jpg" width="15px"> Category
+                </a>
+            </h3>
             <ul class="list-style aside-list-style">
                 {% for category in site.categories %}
                 <li><a href="{{ category.url }}" class="a-style-none">{{ category.name }}</a></li>
@@ -16,8 +20,9 @@
         <div class="main-aside-tags">
             {% include tag.html %}
             <h3>
-                <img src="../../../../assets/images/tagicon.png" width="15px">
-                <a href="/tags/" class="a-style-none">Tags</a>
+                <a href="/tags/" class="a-style-none">
+                    <img src="../../../../assets/images/tagicon.png" width="15px"> Tags
+                </a>
             </h3>
             <ul class="list-style aside-list-style">
                 {% for tag in tags%}
