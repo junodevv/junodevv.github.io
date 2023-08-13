@@ -29,3 +29,5 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+# 코드블록 하이라이터
+highlighter: rouge
