@@ -17,7 +17,7 @@ tags: algorithm java 대소문자변환 대소문자구분
 
 <p class="text-red">(char는 사용 불가)</p>
 
-- str.toUpperCase() => string을 대문자로 변환
+- <b class="text-red">str.toUpperCase()</b> => string을 대문자로 변환
 
 ```java
 String str = "abc";
@@ -62,3 +62,13 @@ char c = "a";
 System.out.print(Character.isUpperCase(c)); // false
 System.out.print(Character.isLowerCase(c)); // true
 ```
+
+-----------
+
+# 끝
+
+## reference
+
+[1,2번 참고 사이트](https://liveonit.tistory.com/entry/JAVA-%EB%8C%80%EB%AC%B8%EC%9E%90-%EC%86%8C%EB%AC%B8%EC%9E%90%EB%A1%9C-%EB%B3%80%EA%B2%BDString-char)
+
+[Character.isUpperCase(char)참고 사이트](https://jamesdreaming.tistory.com/158)
