@@ -116,6 +116,10 @@ public class Solution {
 - isUpperCase() 함수를 이용해 대/소문자를 구분함
 - answer변수를 새로 만들어서 그 안에 char를 하나씩 추가함
 
+### 성능 요약
+- 메모리: 68.5 MB
+- 시간: 197.5 ms
+
 -----
 
 ```java
@@ -140,10 +144,14 @@ public class Solution {
 ### 코드설명
 - 대문자와 소문자의 아스키코드의 차이가 32임을 활용한 코드
 
+### 성능 요약
+- 메모리: 64 MB
+- 시간: 165 ms
+
 -----
 
 # 끝
 
-## reference
+<h2 class="text-gray">reference</h2>
 
 [프로그래머스 다른사람풀이](https://school.programmers.co.kr/learn/courses/30/lessons/181949/solution_groups?language=java)
