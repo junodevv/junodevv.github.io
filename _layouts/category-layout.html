@@ -13,7 +13,7 @@ layout: default
         {% if post.tags %}
         <img src="../../../../assets/images/tagicon.png" width="13px">
             {% for tag in post.tags %}
-                #{{ tag }}
+                <a href="/tags/#{{tag}}" class="a-style-sky">#{{ tag }}</a>
             {% endfor%}
         {% endif%}
     </li>
