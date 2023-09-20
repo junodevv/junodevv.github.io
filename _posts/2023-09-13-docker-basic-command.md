@@ -70,9 +70,12 @@ tags: cloud docker
 
 <img width="942" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/61b00c1a-a56d-49f6-a7b5-73752f0f0203">
 
+----- 
+
+# 끝
+
 -----
 
-# 컨테이너 통신
+## reference
 
-컨테이너 통신 체크 포인트
-
+[교수님 블로그, 개발자 hull](https://hull.kr/cloud/7)
