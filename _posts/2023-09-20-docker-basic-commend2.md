@@ -6,6 +6,9 @@ tags: cloud docker
 
 2023-09-20 클라우드 프로그래밍 3주차 강의 1
 
+> 1. [컨테이너 통신](#컨테이너-통신)
+> 2. [이미지 삭제](#이미지-삭제)
+
 -----
 
 # 컨테이너 통신
@@ -72,7 +75,7 @@ docker start apa000ex2
 
 # 이미지 삭제
 
-이미지 삭제 체크 포인트
+**이미지 삭제 체크 포인트**
 
 - 이미지를 삭제하는 이유 : 컨테이너를 삭제해도 이미지는 그대로 남아 스토리지 용량을 압박하게 됨
 - 이미지 삭제하는 방법 : 해당 이미지로 실행한 컨테이너가 남아 있으면 이미지를 삭제할 수 없으므로 컨테이너 삭제후 이미지 삭제 가능
@@ -81,8 +84,53 @@ docker start apa000ex2
     - 공백으로 구분해 여러 이미지를 지정 가능
     - docker image rm [이미지_이름] [이미지_이름] [이미지_이름]
 
+```docker
+# 이미지 목록 확인
+docker image ls
+```
 
-+이후 실습 정리하기
+<img width="695" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/f741880e-962e-418a-9f48-514e3b6814fc">
 
 
+- 이미지 목록의 주요 항목 표
 
+<img width="767" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/1d8c1069-2bd7-436d-9b4d-4032cfaef9f1">
+
+
+**이미지 삭제**
+
+```docker
+# 이미지 삭제
+docker image rm httpd
+
+# 버전지정 이미지 삭제
+docker image rm httpd:2.2
+```
+
+> 이때, 해당 이미지가 컨테이너에서 사용 중이면 이미지를 삭제할 수 없다는 오류 메시지가 뜸
+>
+> 아파치 컨테이너를 종료(stop)만 하고 삭제(rm)르르 하지 않았기 때문에 이미지가 사용중인 것으로 간주됨
+
+```docker
+# 존재하는 컨테이너 목록확인
+docker ps -a
+```
+<img width="697" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/233e473a-7b27-48d2-a6f5-c96d84ae955c">
+
+```docker
+# 컨테이너 삭제
+docker rm apa000ex2
+
+# 이후 오류메시지가 떴던 이미지 삭제
+docker image rm httpd
+```
+
+-----
+
+# 끝
+
+-----
+
+## reference
+
+[개발자 hull, 교수님 강의블로그](https://hull.kr/cloud/7)
