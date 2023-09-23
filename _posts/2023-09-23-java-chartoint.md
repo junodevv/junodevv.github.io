@@ -1,5 +1,5 @@
 ---
-title: "[JAVA] Char -> Int 변환"
+title: "[Java] Char -> Int 변환"
 category: Java
 tags: java method char int
 ---
