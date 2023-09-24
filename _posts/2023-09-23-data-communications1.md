@@ -143,14 +143,39 @@ tags: Data-communication network
 #### OSI 7계층 참조모델
 
 > - 1계층: 물리 계층 | Physical - 기계적, 전기적, 기능적, 절차적 특성을 정의, <b class="text-red">비트스트림을 물리적 매체를 통해 전송</b>
->
+><br><br>
 > - 2계층: 데이터 링크 계층 | Data Link - 물리적인 링크를 통해 동기화, 에러제어, 흐름제어 등을 통해 패킷을 전송
+><br><br>
+> - 3계층: 네트워크 계층 | Network - 8비트의 숫자 4개로 구성된 IP 주소 체계로 사용,경로제어와 통신량 제어 등 수행
 >
+>       8비트숫자 4개: 192.168.0.2 -> 11000000 . 10101000 . 00000000 . 00000010 
+>
+> - 4계층: 전송 계층 | Transport - 종단 간의 신뢰성이 있고 투명한 데이터 전송을 제공, 오류제어, 통신량제어, 다중화를 제공하며 응용프로그램간 통신을 위해 포트를 사용
+><br><br>
 > - 5계층: 세션 계층 | Session - 동기화 유지, 데이터 교환 관리, 전송계층에서 설정된 종단 간 논리적 연결에 추가 서비스를 제공
->
+><br><br>
 > - 6계층: 표현 계층 | presentation - 데이터의 구조를 하나의 통일된 형식으로 표현, 데이터의 압축 암호화 기능 수행
->
+><br><br>
 > - 7계층: 응용프로그램 계층 | Application - 유저, <b class="text-red">응용프로그램 간의 데이터 교환</b>을 가능케 하는 계층
 >
 >       ex) HTTP, FTP, 터미널서비스, 메일프로그램, 디렉토리서비스
-<b class="text-red"></b>
+
+#### Protocol의 표준화
+
+> - 표준화의 필요성: 상호연동성(상호호환성)
+
+> - 표준화 과정
+
+<img width="547" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/9070cf4a-b637-47b0-8525-bbba292eab7b">
+
+
+<p class="text-gray">*참고: Metric unit</p>
+<img width="607" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/333d289c-7d61-488d-a3e0-06bc1d884aac">
+
+# 끝
+
+-----
+
+## reference
+
+교수님 강의
