@@ -105,5 +105,49 @@ tags: Network data-communication
 
 #### CRC (Cyclic Redundancy Check) 검출법
 
+> - 다항식의 원리를 이용한 방법
+> - 수신 후 데이터 부분을 나누어 CRC를 생성하고, CRC필드값과 비교하여 동일하면 오류없음 틀리면 오류발생
+> - 검출능력이 좋아서 대부분의 LAN(Ethernet)에서 사용된다.
+> - CRC-16, CRC-32, CRC-12
+
+<img width="462" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/59b9f202-42b2-42c3-bd34-0981e519dabc">
+
+### 3.4 오류복구/정정
+
+#### 역방향 오류정정
+                재전송으로 오류를 해결
+
+> 1. Stop-and-wait ARQ: 프레임 1개를 전송할 때마다, ACK(응답프레임)를 기다림
+                장점: 정확하다. | 단점: 속도가 늦다.
+> 2. GO-back-N ARQ: 프레임을 계속 보내다가, NAK(부정응답프레임)가 온 이후의 모든 프레임을 재전송
+                단점: 중복으로 인한 효율성 저하
+> 3. Selective-rejeck ARQ: 프레임을 계속 보내다가, NAK(부정응답프레임)가 온 프레임만 재전송
+
+#### 전방향 오류정정
+                재전송하지 않고 오류를 해결하는 방법
+> (전송 프레임내에 부가정보를 추가하여) 수신된 프레임만 가지고 오류정정을 할 수 있는 방식
+>
+> <b class="text-red">Hamming codes</b>
+
+<img width="473" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/71ac206f-5d8d-4ff9-b299-458bab5195ca">
+
+#### 해밍코드(Hamming code)를 이용한 오류정정법
+
+> - 해밍코드로 <b class="text-red">parity bit를 생성</b>하는 과정
+
+<img width="661" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/16d7658c-ec2f-4b90-9675-9c7cbcafe641">
+
+                - 총 비트 위치 == 12
+                - Parity Position == 1,2,4,8
+                - 원본 비트 Position == 3,5,6,7,9,10,11,12
+
+> - 해밍코드로 <b class="text-red">오류를 검출하고 오류를 정정</b>하는 과정
+
+<img width="549" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/cc82c3dc-c332-4ca5-8e4b-da737ee73b8a">
+
+> - 모든 Parity가 0 이면 오류가 없는것 ( 그렇지 않으면 오류가 있는 것)
+> - 위 사진에선 결과가 "0101"이므로 오류가 있는것
+> - 오류있는 결과 "0101"을 10진수로 변환하면 '5' 가됨 따라서, 5번째 비트에서 오류가 발생한것. -> 5번째 비트를 1에서 0으로 바꿔주면 오류가 정정된다.
 
 <b class="text-red"></b>
+<b class="text-blue"></b>
