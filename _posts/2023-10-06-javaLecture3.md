@@ -30,4 +30,8 @@ tags: java java강의
         = 분산처리: 다운로드의 속도를 결정하는 것은 하드디스크에 I/O하는 시간, 4개의 하드디스크에 분산처리 하게되면 1개의 하드디스크에 4초동안 I/O할 것을 4개의 하드디스크에 1초만에 I/O할 수 있게됨
 
 
+# 끝
 
+## reference
+
+[itwill, K-디지털 디지털기초역량 향상을 위한 웹개발 입문 과정](https://www.e-itwill.com/main/index.jsp)

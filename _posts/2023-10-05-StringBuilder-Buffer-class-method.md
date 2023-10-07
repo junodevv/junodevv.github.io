@@ -92,6 +92,25 @@ sb.substring(3);
 // sb = "juno"
 ```
 
+# 9. .toString();
+
+StringBuilder(Buffer) 타입의 인스턴스를 String 타입으로 바꿔준다.
+
+```java
+StringBuilder strB = new StringBuilder();
+    	
+strB.append("자바");
+
+String str = strB.toString();
+    	
+System.out.println(strB); // "자바"    	
+System.out.println(str);    // "자바"
+```
+
+출력결과는 같다.
+
+이 메소드는 return 타입이 String인 메소드에서 StringBuilder를 사용했을때 유용하다.
+
 이외에도 더 있지만 앞으로 공부하면서 사용하게 된 것들을 하나씩 정리할 예정
 
 -----
