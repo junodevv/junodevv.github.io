@@ -1,5 +1,5 @@
 ---
-title: "[java] 강의1 전자와 2진수의 이해 및 메모리의 이해"
+title: "[Java] 강의1 전자와 2진수의 이해 및 메모리의 이해"
 category: Java
 tags: java java강의 
 ---

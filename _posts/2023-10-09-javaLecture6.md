@@ -1,5 +1,5 @@
 ---
-title: "[java] 강의6 JDK"
+title: "[Java] 강의6 JDK"
 category: Java
 tags: java java강의 
 ---

@@ -1,5 +1,5 @@
 ---
-title: "[java] 강의2 컴퓨터 구조"
+title: "[Java] 강의2 컴퓨터 구조"
 category: Java
 tags: java java강의 
 ---

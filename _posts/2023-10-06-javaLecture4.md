@@ -1,5 +1,5 @@
 ---
-title: "[java] 강의4 TCP통신, 해시, 암호화, HTML"
+title: "[Java] 강의4 TCP통신, 해시, 암호화, HTML"
 category: Java
 tags: java java강의 
 ---
