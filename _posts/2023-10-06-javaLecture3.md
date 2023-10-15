@@ -1,5 +1,5 @@
 ---
-title: "[java] 강의3 I/O란"
+title: "[Java] 강의3 I/O란"
 category: Java
 tags: java java강의 
 ---
