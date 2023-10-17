@@ -56,6 +56,9 @@ blockquote{
     text-decoration: none;
     color: black;
 }
+.a-style-line{
+    color: black;
+}
 // 네비게이션에서 선택된 애 속성
 .current{
     color: skyblue;
@@ -137,6 +140,7 @@ hr{
 section{
     margin-left: 8px;
     overflow-x: hidden;
+    width: 70%;
 }
 .section-contents{
     width: 60vw;
@@ -155,3 +159,5 @@ section{
 .tag-wrap{
     width: 60vw;
 }
+
+//////////////* aboutme *///////////////
