@@ -10,8 +10,8 @@ tags: cloud docker
 
 도커 실습 2
 
-> 1. 도커 허브
-> 2. 도커 컴포즈
+> 1. [도커 허브](#1-도커-허브)
+> 2. [도커 컴포즈](#2-도커-컴포즈)
 
 -----
 
@@ -32,7 +32,7 @@ tags: cloud docker
 - 이미지의 다양한 버전을 관리하고 구분
 
 
-<img width="1015" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/f7dd2fa8-9717-4a0d-aaa5-c1bc8e09973a">
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/f7dd2fa8-9717-4a0d-aaa5-c1bc8e09973a">
 
 ### 태그
 - **도커 이미지의 버전을 식별하기 위한 라벨**
@@ -56,22 +56,68 @@ tags: cloud docker
 - docker push [레지스트리_주소]/[리포지토리_이름]:[버전]
 - 리포지토리는 처음 업로드할 때는 존재하지 않고, push 커맨드를 실행하며 만들어짐
 
-```shell
-# 컨테이너 명 : mysql
-# 네트워크 : php-mysql
-# root 패스워드 : 123456
-# database : php-mysql
-# 사용자 계정 : php-mysql
-# 사용자 패스워드 : 123456
-# 포트포워드 : 33306:3306
-docker run --name mysql 
--dit -p 33306:3306 
---net=php-mysql 
--e MYSQL_ROOT_PASSWORD=123456 
--e MYSQL_DATABASE=php-mysql 
--e MYSQL_USER=php-mysql 
--e MYSQL_PASSWORD=123456 
-mysql --character-set-server=utf8mb4 
---collation-server=utf8mb4_unicode_ci 
---default-authentication-plugin=mysql_native_password
-```
+실
+
+습
+
+-----
+
+# 2. 도커 컴포즈
+
+### 도커 컴포즈란
+- 시스템 구축과 관련된 명령어를 하나의 텍스트 파일(정의 파일)에 기재해 명령어 한번에 시스템 전체를 실행하고 종료와 폐기까지 한번에 하도록 도와주는 도구
+
+<img width="500" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/fba6d1cb-fa9b-44ed-ac51-b882a154c8b4">
+
+
+### 도커 컴포즈의 구조
+- 시스템 구축에 필요한 설정을 YAML(YAML Ain’t a Markup Language) 포맷으로 기재한 정의 파일을 이용해 전체 시스템을 일괄 실행(run) 또는 일괄 종료 및 삭제(down)할 수 있는 도구
+- 정의 파일에는 컨테이너나 볼륨을 ‘어떠한 설정으로 만들지＇에 대한 항목이 기재
+- up 커맨드
+    - docker run 커맨드와 비슷
+    - 정의 파일에 기재된 내용대로 이미지를 내려받고 컨테이너를 생성 및 실행
+    - 정의 파일에는 네트워크나 볼륨에 대한 정의도 기재할 수 있어 주변 환경을 한꺼번에 생성 가능
+- down 커맨드
+    - 컨테이너와 네트워크를 정지 및 삭제
+    - 볼륨과 이미지는 삭제하지 않음
+
+### 도커 컴포즈 사용법
+- 호스트 컴퓨터에 폴더를 만들고 이 폴더에 정의 파일(YAML 파일)을 배치
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/0b682774-5065-488e-93da-4afadc316c99">
+
+### 컴포즈 파일 작성
+
+>- 첫 줄에 도커 컴포즈 버전을 기재
+>
+>- 주 항목 services, networks, volumes 아래에 설정 내용을 기재
+>
+>- 항목 간의 상하 관계는 공백을 사용한 들여쓰기로 나타냄
+>
+>- 들여쓰기는 같은 수의 배수만큼의 공백을 사용
+>
+>- 이름은 주 항목 아래에 들여쓰기한 다음 기재
+>
+>- 컨테이너 설정 내용은 이름 아래에 들여쓰기한 다음 기재
+>
+>- 여러 항목을 기재하려면 줄 앞에 ’-’를 붙임
+>
+>- 이름 뒤에 콜론( : )을 붙임
+>
+>- 콜론 뒤에는 반드시 공백이 와야함(바로 줄바꿈하는 경우는 예외)
+>
+>- \# 뒤의 내용은 주석으로 간주
+>
+>- 문자열은 작은 따옴표( ‘ ) 또는 큰 따옴표( “ ) 로 감싸 작성
+
+실
+
+습
+
+
+# 끝
+-----
+
+## reference
+
+[교수님 블로그, hull.kr](https://hull.kr/cloud/10)
