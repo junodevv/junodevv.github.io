@@ -6,7 +6,7 @@ title: "aboutme for WTC"
 
 지원서 속 제 이야기의 신뢰도를 높이기 위해 작성해봤습니다!
 
-비록 개발에 관한 이야기는 부족하지만 과거의 삶의 태도를 보여드림으로써 앞으로 개발에 대한 저의 태도, 열정을 보여드리고 싶어 따로 페이지를 만들어 봤습니다.
+비록 개발에 관한 이야기는 부족하지만 제 과거의 삶의 태도를 보여드림으로써 앞으로 개발을 대할 저의 태도, 열정을 보여드리고 싶어 따로 페이지를 만들어 봤습니다.
 
 항목별로 보여드리고 싶은 내용들입니다.
 
@@ -31,7 +31,7 @@ title: "aboutme for WTC"
 <img width="400" alt="Pasted Graphic 1" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/39e3770d-7dac-44a6-b7de-0ef5d289b719">
 <img width="400" alt="Pasted Graphic 2" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/588a4c52-bb59-48af-a210-4e2b2d7536ed">
 
-<a href="../../../../assets/chumbu/educationbongsa.pdf">교육봉사 인증서 파일</a>
+<a href="../../../../assets/chumbu/educationbongsa.pdf">교육봉사 인증서(총 7페이지)</a>
 
 해당 항목에서 언급한 교육봉사의 인증서입니다. 
 
@@ -67,11 +67,23 @@ title: "aboutme for WTC"
 <img width="300" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/a4435325-aa6b-41fb-8929-2102f931c9a6">
 <img width="300" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/a6a19550-7043-423a-befd-62fa3798c538">
 
-그리고 
 
-최근 개발자로 진로를 결정해야겠다는 생각을 들게해준 단기부트캠프의 수료증입니다.
+<hr>
+
+
+# 원하는 프로그래머 모습
+
+제가 원하는 프로그래머의 모습은 <b class="text-red">협업하고 싶은 프로그래머, 성장하는 프로그래머</b>입니다.
+
+성장하는 프로그래머가 되기 위해 학교 복수전공 이외의 여러 교육환경에 참여하고 있습니다.
+
+<br>
+
+### 비트교육센터 | 웹 백엔드 개발자 집중 양성과정(1개월과정)
 
 <img width="350" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/ff515faa-2aec-4be3-a0e7-c5eb0c02ff94">
+
+최근 개발자로 진로를 결정해야겠다는 생각을 들게해준 단기부트캠프 교육 입니다.
 
 비록 짧지만 넓고 얕개 배우면서 백엔드 프로그래밍에 대한 전반적인 내용들을 배웠습니다.
 
@@ -79,7 +91,29 @@ title: "aboutme for WTC"
 
 이 교육을 들으면서 백엔드 프로그래밍이 너무 재미있었고 내가 이정도로 즐길수 있다면 이 분야로 진로를 결정해도 되겠다는 생각을 하게 되었습니다.
 
+또한 "오랜 시간 몰입했던 경험 그리고 도전" 항목에서 언급했던대로 프로그래밍에 내가 몰입했다는 느낌을 들게 해준 교육이었습니다.
+
+<br>
+
+### itwill | 디지털 기초역량 향상을 위한 웹개발 입문 과정(k-디지털기초역량훈련)
+
+<img width="350" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/eceb8e68-fcb8-4ce8-87e2-9c9e33711b64">
+
+이후 백엔드 웹개발에 대해 더 배우고 기초를 확실히 다지고 싶어 따로 수강한 교육입니다. 
+
+JAVA 프로그램의 동작원리, 통신 원리 등의 기초적인 내용을 배웠습니다.
+
+
 <hr>
 
+# 마무리
 
-# 원하는 프로그래머 모습
+아직 개발에 대한 경험이 부족하지만 지금까지 복수전공 강의와 외부 강의들을 찾아들으며 개발공부를 꾸준히 해왔습니다.
+
+계속해서 저에게 도움이될 교육환경을 찾아 다니며 성장하려고 노력하고 있습니다.
+
+이제는 프로젝트를 해볼 수 있는(협업을 경험할 수 있는) 교육환경이 필요하다고 생각했고 가장 좋은 환경이 우아한 테크 코스라고 판단했습니다.
+
+우아한 테크 코스에 참여하게 된다면 끝까지 이 과정에 몰입할 자신이 있고 과정 이후에는 한 층 성장한 개발자가 될 수 있을거라고 생각합니다.
+
+감사합니다!
