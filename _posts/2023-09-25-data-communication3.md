@@ -149,5 +149,127 @@ tags: Network data-communication
 > - 위 사진에선 결과가 "0101"이므로 오류가 있는것
 > - 오류있는 결과 "0101"을 10진수로 변환하면 '5' 가됨 따라서, 5번째 비트에서 오류가 발생한것. -> 5번째 비트를 1에서 0으로 바꿔주면 오류가 정정된다.
 
+### 3.5 흐름제어(Flow Control)
+
+- 원인
+    - 송신노드와 수신노드의 처리성능(속도차)이 다름
+    - 송신속도가 너무 빨라서 수신노드가 처리하기 어려움
+    - 수신버퍼링이 늦어지면 프레임이 분실될 수 있음
+
+- 해결방법
+    - 수신노드가 송신노드의 송신시점을 제어 
+
+#### Feedback-based Flow Control
+
+        1. Stop & Wait 흐름제어 기법
+        2. Sliding Windows 흐름제어 기법
+
+- Stop & Wait 흐름제어 기법
+    - 오류제어(Stop & WaitARQ)와 같은방식
+                
+            장점: 단순함
+            단점: 성능 ↓
+
+    - 전송 프레임당 응답을 수신함
+    - <b class="text-red">1</b>: **프레임 전송시간(transmission)**
+            
+            = 프레임의 끝 부분(모든부분)이 수신노드까지 도착하는 시간
+
+    - <b class="text-blue">a</b>: **프레임 전송** <b class="text-blue">지연</b>**시간(Propagantion time)**
+
+            = 프레임의 맨 앞부분이 수신노드까지 도착하는 시간( ex육상경기 )
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/48f971fa-8ccc-48c4-bd3b-f18546ea13c5">
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/c9e0cf4f-ecc0-4ccf-a89d-0f0576456518">
+
+- Sliding Windows 흐름제어 기법
+    - 정해진 양(Window)만큼 보내고 응답을 기다리는 방식. 즉 정해진 양 이상으로는 보내지 않음
+            ex) window가 4면 4개까지는 마음대로 보내고 나서 응답을 기다림
+
+    - Window size: 응답없이 보낼 수 있는 프레임의 최대 개수
+
+            ex) Window size = 4, 송신노드가 4개의 프레임을 최대로 보낼 수 있음
+
+    - Window는 n-bit sequence counter로 구현, 윈도우 범위: 0 ~ 2ⁿ-1
+
+            n-bit sequence counter: n비트로 구성된 매 입력마다 정해진 순서로 상태가 주기적으로 변하는 레지스터
+            
+            ex) 3-bit = 0~7, 6-bit = 0~63, 8-bit = 0~255
+    - Window 동작원리
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/cb372324-7c67-4044-8a8c-edd14e8b55e7">
+    - 사례
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/c7ac6eba-ae5e-4ce5-8dd5-47f50304c9e9">
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/a180a511-d0ab-4507-951a-245217dbcc7d">
+
+- Piggybacking(피기배킹) 기법
+        
+        A <-> B 서로 데이터를 보낸다면, 각자 데이터를 보낼 떄 응답 신호를 실어 보내는것
+
+    - 전이중(Ful deplex) 전송방식에서 전송 효율을 높이기 위한 방법
+    - 데이터 프레임(I) 내부에 응답(ACK or NAK)을 포함시켜 보내는 기법
+            - 두번걸쳐 보내는 프레임을 한번으로 줄일 수 있음
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/84da5327-7695-4b08-9105-7bf49121a9a5">
+
+### 3.6 프레임 생성/관리
+
+- 프레임(Frame)이란
+    - 데이터링크 계층에서 전송하는 데이터의 단위
+    - 프레임의종류
+        - 데이터프레임
+        - 응답프레임(ACK or NAK)
+                ACKnowledgement or Negative AcKnowledgement
+
+- 프레임 생성 방법
+    - 네트워크 계층에서 내려운 bit stream을 프레임으로 생성
+    - 구조: <b class="text-blue">Header + Payload(데이터) + Trailer</b>
+    - 생성시 4가지 고려사항
+        - Byte count
+        - Character stuffing
+        - Bit stuffing
+        - 물리계층 코딩침해문제
+
+### 3.7 프레임
+
+#### 문자프레임(Character Frame)
+- 데이터의 내용이 문자로 구성됨(= 8비트 단위의 고정크기), ASCII 코드로 정의
+- 프레임의 시작(DLE, STX)과 끝(DLE, ETX)를 추가하여 프레임의 경계를 구분함
+
+<img width="408" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/5cbea97f-8014-4ecb-a1df-dcc0c09236ab">
+<img width="92" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/c48ec0d4-9e3b-47fe-aad0-6dc3fe57ddd5">
+
+
+#### 문자 스터핑(Character stuffing)
+
+- 문자프레임 + <b class="text-red">"제어용 문자"</b>를 추가
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/37b53208-aa49-4b32-ac54-0773ea87bae5">
+
+#### 비트프레임(Bit Frame)
+- 프레임의 시작과 끝에 특정 비트패턴인 <b class="text-red">플래그(Flag,01111110)</b>를 추가해서 시작과 끝을 구별함
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/39937564-5eb4-46a9-85db-779d350442b2">
+
+#### 비트 스터핑(Bit stuffing)
+- 비트프레임 + <b class="text-red">"제어용 비트"</b> 추가
+
+<img width="500" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/82878977-c98e-418e-9f00-aadffbec6434">
+
+### 3.8 주소 및 링크 제어 관리
+
+#### 점대점 링크, Point-to-Point 연결
+- 두 노드간의 구성이 <b class="text-red">1:1</b>로 전송매체를 <b class="text-red">전용</b>으로 사용, <b class="text-red">주소 불필요</b>
+
+#### 방송용 링크, Broadcasting
+- 두 노드간의 구성이 <b class="text-blue">1:N</b>으로 전송매체를 <b class="text-blue">공용</b>으로 사용, 매체에 있는 모든 노드가 수신노드
+
+#### 멀티드롭 링크, Multi drop 연결
+- 노드간의 구성이 <b class="text-blue">1:N</b>으로 전송매체를 <b class="text-blue">공용</b>으로 사용하여 주소가 불필요
+- 링크제어필요 (= Bus 제어)
+
+
 <b class="text-red"></b>
 <b class="text-blue"></b>
