@@ -52,5 +52,58 @@ tags: cloud docker
 
 <img width="600" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/8c64703b-140a-44e5-b321-929aa1809adb">
 
-<p class="text-red"></p>
-<p class="text-blue"></p>
+자유로이 옮길 수 있는 컨테이너
+- 도커만 설치돼 있으면 운영체제가 달라도 컨테이너를 옮길 수 있음
+- 도커를 이용하면 물리적 환경의 차이, 서버 구성의 차이를 무시할 수 있으므로, 운영 서버와 개발 서버의 환경 차이로 인한 문제를 방지할 수 있음
+        
+        도커 엔진 위에서 동작하기 때문
+
+<img width="500" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/f43ffe37-600e-4421-b4f4-3fcbcd302ce2">
+
+도커의 구조
+- 물리서버 -> 리눅스 OS -> Docker Engine -> 컨테이너
+- 도커에서는 컨테이너 속에 운영체제의 주변 부분이 들어 있어 프로그램의 명령을 전달받고 이를 커널에 전달하는 구조로 되어 있음
+
+<img width="450" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/567890d0-30c2-4365-a942-dde1079bbfa0">
+
+윈도우와 macOS에서 도커 구동하기
+- 가상 환경 위에 리눅스 운영체제를 설치하고 그 위에서 도커를 실행
+    - 이때 도커를 실행하는데 필요한 리눅스 운영체제를 포함하는 패키지(apt)를 설치하여 실행
+
+<img width="300" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/b2913a39-b3ba-4325-b1a4-50fb632d54d0">
+
+이미지와 컨테이너
+- 이미지: 컨테이너의 설계도, 컨테이너를 생성하는데 사용
+    - 동일한 컨테이너를 여러개 생성할수 있다.
+
+<img width="450" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/17cf6905-ee82-40d2-8c2e-e15efde739f7">
+
+- 컨테이너 -> 이미지, 컨테이너로도 새로운 이미지를 만들 수 있다.
+
+<img width="450" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/9f54f7af-0117-4637-abcb-90ea00a91f6d">
+
+- 위와 같은 방식을 활용하여 컨테이너를 이동시킬 수 있음
+    - 컨테이너 -> new 이미지 -> new 컨테이너
+
+<img width="450" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/1730567f-15e9-40d1-813c-6a354598d152">
+
+도커의 장점
+- 하나의 물리서버로 여러 대의 서버를 띄울 수 있다.
+- 서버 관리가 용이하다.
+- 다루기 쉽다.
+
+도커의 단점
+- 호스트 서버에 문제발생시 모든 컨테이너가 영향을 받는다.
+
+도커의 주 용도
+- 동일한 개발 환경제공
+- 새로운 버전의 테스트
+- 동일한 서버가 여러대 필요할 때
+
+# 끝
+
+-----
+
+## reference
+
+[교수님 블로그, 개발자 hull.kr](https://hull.kr/cloud/6)
