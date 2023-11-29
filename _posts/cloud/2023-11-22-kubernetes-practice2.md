@@ -171,6 +171,11 @@ kubectl get pod
 kubectl get pod -o wide
 ```
 
+> NAME: my-httpd-7547bdb59f-62tcw
+> - my-httpd -> 이미지 이름
+> - 7547bdb59f -> 디플로이먼트 이름
+> - 62tcw -> 파드 이름
+
 - 목록 항목
     - NODE: 파드가 실행되고 있는 노드
     - NOMINATED NODE: 예약된 노드의 이름(예약된 노드가 없으므로 none)
@@ -213,5 +218,9 @@ kubectl exec -it my-httpd-7547bdb59f-cdkd9 -- /bin/bash
 kubectl logs my-httpd-7547bdb59f-cdkd9
 ```
 
+> 파드에 접속되었던 로그들이 뜸
 
-끝
+# 끝
+
+## reference
+[교수님 강의 및 블로그, hull.kr](https://hull.kr/cloud/24)
