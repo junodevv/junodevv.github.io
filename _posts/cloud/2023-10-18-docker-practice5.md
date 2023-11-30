@@ -48,10 +48,10 @@ tags: cloud docker
 
 # 역방향 프록시 컨테이너 설치
 
-nginx 역방향 프록시 도커 허브
+### nginx 역방향 프록시 도커 허브
 - https://hub.docker.com/r/jlesage/nginx-proxy-manager
 
-nginx 역방향 프록시 컨테이너 설치
+### nginx 역방향 프록시 컨테이너 설치
 ```shell
 docker run -d --name myproxy -p 8181:8181 -p 80:8080 -p 443:4443 -v /docker/appdata/nginx-proxy-manager:/config:rw jlesage/nginx-proxy-manager
 ```
@@ -60,16 +60,107 @@ docker run -d --name myproxy -p 8181:8181 -p 80:8080 -p 443:4443 -v /docker/appd
         80: http
         443: https
 
-nginx 역방향 프록시 접속
+### nginx 역방향 프록시 접속
 - http://게스트 우분트 아이피:8181
 - http://192.168.47.128:8181
 - id : admin@example.com
 - pw : changeme
 
-nginx 역방향 프록시 admin 설정
+### nginx 역방향 프록시 admin 설정
 - 아이디(메일), 패스워드 반드시 자신의 계정으로 변경
 - 패스워드는 8자리 이상
 
 **도메인 페이크 해야됨** aaa.com이 이미 존재하기떄문에 호스트 컴퓨터 내에서 aaa.com으로 접속을하면 기존에 있는 그 도메인이 아니라 내가 설정한 IP로 접속할 수 있게 해줘야 함
 
-실습 이어서 하기
+
+### 아파치 서버 및 nginx 서버 컨테이너 설치
+```shell
+mkdir apacheHome
+mkdir nginxHome
+docker run --name myapache -d -p 8001:80 -v ~/apacheHome:/usr/local/apache2/htdocs httpd
+docker run --name mynginx -d -p 8002:80 -v ~/nginxHome:/usr/share/nginx/html nginx
+```
+
+### 각 폴더에 index.html 파일 생성
+```shell
+# 폴더 이동
+cd /apacheHome
+# 파일 생성
+vi index.html
+```
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아파치 서버</title>
+</head>
+<body>
+<h1>아파치 서버</h1>
+</body>
+</html>
+```
+```shell
+# 폴더 이동
+cd /nginxHome
+# 파일 생성
+vi index.html
+```
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>엔진X 서버</title>
+</head>
+<body>
+<h1>엔진X 서버</h1>
+</body>
+</html>
+```
+
+결과
+
+<img width="353" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/280973c5-e964-475a-bd92-8c9c698e7244">
+<img width="358" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/e0c9117d-5a35-438b-8e79-a7ce5d11fc87">
+
+# nginx proxy manager로 도메인 설정 과정
+
+### 도메인 페이크(hosts 파일 변경)
+
+루트 권한으로 hosts 파일로 이동
+```shell
+sudo vi private/etc/hosts
+```
+<img width="406" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/b9c9ff77-5826-43c4-8a0d-fffedcc83ece">
+
+원하는 IP와 도메인 추가
+- aaa.com
+- bbb.com
+
+### Nginx Proxy Manager 접속 후 Hosts 설정
+
+172.16.147.129:8181로 Nginx Proxy Manager 접속
+
+<img width="860" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/e49b74dc-ffba-41ca-b1e3-1eea108a9ce5">
+
+- Proxy Hosts 클릭
+- add Proxy Host 버튼 클릭
+- IP와 도메인 이름, 포트번호 설정 및 저장
+
+<img width="497" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/03c4950d-1e0e-4d33-af30-3d2f85fd1f4d">
+
+<img width="725" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/d70c44ba-26a0-40a9-b3cb-66c68c5a94f6">
+
+도메인 주소를 통한 페이지 접속
+
+<img width="303" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/d458aa1d-b998-44fa-9ea9-80613985654c">
+<img width="284" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/24afd29b-ad1a-4fd2-a2eb-ba6707d5ddfb">
+
+역방향 프록시를 통한 도메인 기반 서비스 만들기 성공!
+
+# 끝
+
+## reference 
+
+[교수님 블로그 및 강의, hull.kr](https://hull.kr/cloud/14?page=2)
