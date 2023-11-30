@@ -51,7 +51,7 @@ mkdir ./php/user
 
         php를 사용하는 이유: 문법이 쉬워서
 
-각 컨테이너 생성 및 실행
+각 컨테이너 생성 및 실행(front, back(taskapi, userapi))
 
 ```shell
 docker run -d --name myfront -p 8011:80 --net php-mysql -v ~/html:/var/www/html myphpimage
@@ -67,9 +67,7 @@ docker run -d --name myuserapi -p 8013:80 --net php-mysql -v ~/php/user:/var/www
 docker run -d --name myproxy --net php-mysql -p 8181:8181 -p 80:8080 -p 443:4443 -v /docker/appdata/nginx-proxy-manager:/config:rw jlesage/nginx-proxy-manager
 ```
 
-역방향 프록시 설정
-
-host 파일에 도메인 추가
+### host 파일에 도메인 추가
 
 mac은 방식이 달라서 찾아봐야함 -> [호스트(hosts) 파일 수정하는 법](https://likedev.tistory.com/entry/MAC%EB%A7%A5%EB%B6%81%EC%97%90%EC%84%9C-hosts-%ED%8C%8C%EC%9D%BC-%EC%88%98%EC%A0%95-%EB%B0%A9%EB%B2%95)
 
@@ -82,23 +80,39 @@ mac은 방식이 달라서 찾아봐야함 -> [호스트(hosts) 파일 수정하
             원인2: 백신프로그램이 막는경우
             원인3: hosts 파일을 .txt 파일로 저장한 경우
 
+### 역방향 프록시 설정
 
-크로스 오리진 문제 : 
+<img width="583" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/c48424a4-4f5c-4ae9-9072-c337f029cf61">
 
-이기종 서버?
+### front, back 프로그램 분리
 
-포트를 안치게 하면서 같은 도메인네임 gctask.com:8011(8012)를 사용하지 않고 /task/를 8012포트로 커스텀해서 gctask.com/task/ 으로접속하게 만들어서 같은 도메인에 접속하고 있는걸로 보이게 만듦
+- front 프로그램과 task api 프로그램 분리
+
+![myphpimage](https://github.com/junodevv/junodevv.github.io/assets/126752196/33e25161-9964-45c6-9005-182bf3b09bd7)
+
+### 역방향 프록시 Custom locations 설정
+
+<img width="584" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/8f261f07-5566-47ed-8885-0ff1247e662f">
+
+기능 테스트
+
+<img width="600" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/f1e4bb22-5502-4489-b28f-0d887d68c312">
+
+성공! 실습 끝
+
+----
+
+✓
+
+이기종 서버? 다른 서버
+
+포트를 안치게 하면서 같은 도메인네임 gctask.com:8011(8012)를 사용하지 않고 /task/를 8012포트로 커스텀해서 gctask.com/task/ 으로접속하게 만들어서 같은 도메인에 접속하고 있는걸로 보이게 만듦 
+
+        -> 이기종 서버에 접속하는걸 이기종서버에 접속하는거 같지 않게 만들어 주는것 같음
 
 그리고 IP에 myfront를 넣으면 왜 내부에서 통신해서 80포트로 설정하는 거지
 
 원래는 포트번호를 노출하는 것이 좋지는 않음 그래서 위처럼 task 로 했으면 8012를 명시해서 접속하는걸 막는게 좋음
-
-
-
-<b class="text-red"></b> 
-
-
-# 진행중
 
 -----
 
