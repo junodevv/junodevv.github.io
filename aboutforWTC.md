@@ -1,6 +1,4 @@
----
-title: "aboutme for WTC"
----
+
 
 <b class="text-red">* 우아한 테크코스 관계자 분께 보여드리고 싶은 내용</b>
 
