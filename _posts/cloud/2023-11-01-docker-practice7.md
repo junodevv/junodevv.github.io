@@ -40,7 +40,7 @@ Redis(Remote Dictionary Server)는 고성능 키-값 저장소로, 데이터베�
 
 Redis는 빠른 속도와 다양한 용도로 인해 많이 사용되고 있으며, 특히 세션 관리에 유용함.
 
-        그리고 이기종 서버에서 돌아가는 다양한 종류의 프로그램들이 같은 세션을 유지하도록 도와준다. 
+        이기종 서버에서 돌아가는 다양한 종류의 프로그램들이 같은 세션을 유지하도록 도와준다. 
 
 -----
 
@@ -50,13 +50,13 @@ Redis는 빠른 속도와 다양한 용도로 인해 많이 사용되고 있으�
 - https://hub.docker.com/_/redis
 - https://www.docker.com/blog/how-to-use-the-redis-docker-official-image/
 
-redis 컨테이너 설치 명령어
+### redis 컨테이너 설치 명령어
 
 ```shell
 docker run -d --name myredis --net php-mysql -p 6379:6379 redis
 ```
 
-redis session store 사용을 위한 각 컨테이너(mytaskapi, myuserapi) 모듈 설치
+### redis session store 사용을 위한 각 컨테이너(mytaskapi, myuserapi) 모듈 설치
 
 ```shell
 docker exec -it mytaskapi /bin/bash
@@ -71,19 +71,76 @@ exit
 
         각 서버에서 redis 확장 모듈이 필요하기 때문에 bash들어가서 직접 설치해줌
 
-redis_session.php 설정 파일 생성
+### redis_session.php 설정 파일 생성
+
+- /home/master/php/**task**/redis_session.php
+- /home/master/php/**user**/redis_session.php
 
 ```php
 // Redis에 연결
 $redis = new Redis();
 $redis->connect('myredis', 6379);
+// 세션 핸들러 설정
+session_set_save_handler(
+    function ($save_path, $session_name) use ($redis) {
+        return true;
+    }, function () use ($redis) {
+        return true;
+    }, function ($session_id) use ($redis) {
+        $data = $redis->get("session:$session_id");
+        error_log("Read session data: $data");
+        return $data ? $data : '';
+    }, function ($session_id, $session_data) use ($redis) {
+        return $redis->setex("session:$session_id", 3600, $session_data);
+    }, function ($session_id) use ($redis) {
+        return $redis->del("session:$session_id");
+    }, function ($maxlifetime) use ($redis) {
+        return true;
+    }
+);
 ```
 
-'myredis'부분이 원래 ip? 도메인? 이 들어가야하는데 우리는 도커에서 php-mysql network 로 연결되어 있어서 'myredis'로 사용할 수 있는 거임
+        'myredis'부분이 원래 ip? 도메인? 이 들어가야하는데 우리는 도커에서 php-mysql network 로 연결되어 있어서 'myredis'로 사용할 수 있는 거임
 
------
+### redis 세션 설정 및 확인 테스트 파일 생성
 
-# 진행중
+- home/master/php/user/redis_session_set.php
+
+```php
+include_once ("./redis_session.php");
+session_start();
+$_SESSION['username'] = "홍길동";
+$_SESSION['userid'] = "kky";
+echo "사용자 이름 : {$_SESSION['username']}<br>";
+echo "사용자 아이디 : {$_SESSION['userid']}<br>";
+```
+
+- home/master/php/task/redis_session_get.php
+
+```php
+include_once ("./redis_session.php");
+session_start();
+echo "사용자 이름 : {$_SESSION['username']}<br>";
+echo "사용자 아이디 : {$_SESSION['userid']}<br>";
+```
+
+### 역방향 프록시 설정 확인
+
+<img width="573" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/6839e797-5d0e-4dd0-9b14-e41303c8c1d7">
+
+### redis 세션 테스트
+
+- http://gctask.com/task/redis_session_get.php
+
+<img width="672" alt="Pasted Graphic 3" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/9eb42348-b762-4bc1-8cf3-59c4e1349280">
+
+- http://gctask.com/user/redis_session_set.php
+
+<img width="575" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/0116b3ca-ee61-45df-9055-5a69d775dc53">
+
+- http://gctask.com/task/redis_session_get.php
+
+<img width="615" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/d42f8110-e6f7-4923-9af7-2f4b9ee70dac">
 
 -----
 
