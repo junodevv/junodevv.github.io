@@ -24,7 +24,7 @@ tags: cloud docker
 - app.js 세션 공유 내용 추가
 
 ### 로그인 화면 생성
-- /home/kky/html/login.html
+- /home/master/html/login.html
 
 ```html
 <!doctype html>
@@ -185,11 +185,28 @@ body {
 
 ### user DB 테이블 생성 및 데이터 삽입
 
-교수님은 hideSQL을 통해서 table 생성했음
-        workbench 쓰면 될듯
+![image](https://github.com/junodevv/junodevv.github.io/assets/126752196/efbdf458-189e-4392-8763-22efd2e0e3a9)
+
+
+### redis 세션 연동 설정
+- /home/master/php/user/database.php 수정
+- /home/master/php/task/database.php 수정
+
+```php
+//header("Access-Control-Allow-Origin: *"); // Cross origin 
+$mysql_host = "mysql"; // 172.26.0.2
+$mysql_user = "php-mysql";
+$mysql_password = "123456";
+$mysql_db = "php-mysql";
+   
+$connection = mysqli_connect(
+    $mysql_host, $mysql_user, $mysql_password, $mysql_db
+);
+include_once("./redis_session.php");
+```
 
 ### 로그인 처리 및 redis 세션 생성 파일 생성
-- /home/kky/php/user/login.php
+- /home/master/php/user/login.php
 
 ```php
 include_once("./database.php"); //DB에 연결
@@ -235,10 +252,101 @@ if($_POST['email'] == $row['email'] &&  $_POST['password'] == $row['pass']){
     exit;
 }
 ```
+- 로그인 테스트 http://gctask.com/login.html
 
-\* database.php 에 코드 추가
+<img width="600" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/d215cdf9-dfbf-4cb8-95f9-95f5cd50d22b">
+
+### tasks-list.php 세션 공유 내용 추가
+- /home/master/php/task/tasks-list.php
+
 ```php
-include.once("./@@@")
+include_once("./database.php");
+$ret = array();
+// 세션 시작
+session_start();
+if (!isset($_SESSION['username']) || $_SESSION['username'] == "") {
+    $ret['result'] = "no";
+    $ret['msg'] = "로그인을 해주십시오.";
+    $jsonstring = json_encode($ret, JSON_UNESCAPED_UNICODE);
+    echo $jsonstring;
+    exit;
+}
+$query = "SELECT * from task";
+$result = mysqli_query($connection, $query);
+if (!$result) {
+    die('Query Failed' . mysqli_error($connection));
+}
+$json = array();
+while ($row = mysqli_fetch_array($result)) {
+    $json[] = array(
+        'name' => $row['name'],
+        'description' => $row['description'],
+        'id' => $row['id']
+    );
+}
+$ret['result'] = "ok";
+$ret['msg'] = "정상적으로 데이터를 가져왔습니다.";
+$ret['tasks'] = $json;
+$ret['username'] = $_SESSION['username'];
+$jsonstring = json_encode($ret, JSON_UNESCAPED_UNICODE);
+echo $jsonstring;
 ```
 
-실습진행중
+### app.js 세션 공유 내용 추가
+
+- /home/master/html/app.js 에서 `feachTasks`()함수 수정
+
+```js
+    // Fetching Tasks
+    function fetchTasks() {
+        $.ajax({
+            url: hostNameServerUrl+'tasks-list.php',
+            type: 'GET',
+            dataType: "json", // 서버에서 받는 데이터 타입
+            success: function(tasks) {
+                //const tasks = JSON.parse(response);
+                
+                if(tasks.result == "ok"){
+                    const list = tasks.tasks;
+                    let template = '';
+                    list.forEach(task => {
+                        template += `
+                        <tr taskId="${task.id}">
+                            <td>${task.id}</td>
+                            <td><a href="#" class="task-item"> ${task.name} </a></td>
+                            <td>${task.description}</td>
+                            <td>
+                                <button class="task-delete btn btn-danger" data-taskId="${task.id}" >Delete</button>
+                            </td>
+                        </tr>
+                        `
+                    });
+                    $('#tasks').html(template);
+                    $('.user-name').remove();
+                    $(".table-bordered").before("<p class='user-name'>"+tasks.username+"님의 할일</p>");
+                }else{
+                    alert(tasks.msg);
+                    window.location.href = "/login.html";
+                }
+            
+            }
+        });
+    }
+```
+
+- 최종 로그인 테스트 및 세션 공유 확인
+- http://gctask.com/login.html
+
+        이때 이전과 같은 화면이 나온다면 캐시 삭제 후 다시 진행해보면 된다.
+
+<img width="600" alt="Pasted Graphic 4" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/e661b76c-b3aa-4dc9-945f-3903233e3428">
+
+성공!
+
+---
+
+# 끝
+
+## reference
+
+[교수님블로그 및 강의, hull.kr](https://hull.kr/cloud/19?page=1)
