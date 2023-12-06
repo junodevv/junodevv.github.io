@@ -120,6 +120,7 @@ kubectl delete daemonset prometheus-daemonset
 
 > ✓ 만약 모든 파드를 삭제하고 싶을떄
 pods 삭제 -all 하면 deployment로 생성할 때 "최소 몇개는 살려둬라" 했던 pod들이 살아있게 된다 따라서 deployment도 삭제 -all 해줘야 한다.
+
 ---
 
 # 2. 크론잡
@@ -446,6 +447,7 @@ curl 10.244.2.67
 <img width="457" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/ef0f2b0a-c3c7-498a-a7c4-f3bb2f711e2a">
 
         congifmap-file안에 적은 configmap_test.html이 index에 적용된 것을 확인 할 수 있다.
+
 ----
 
 # 4. 시크릿
@@ -503,6 +505,8 @@ spec:
 kubectl delete secret dbuser
 ```
 
+----
+
 # 5. 볼륨
         - 가장 많이 활용되는 부분
 
@@ -533,6 +537,7 @@ kubectl delete secret dbuser
 - 로컬 볼륨: 노드 내 디스크를 저장소로 사용, 노드 종료 시 데이터 삭제
 - 외부 볼륨: 노드 외부 저장소를 이용, 파드 및 노드와 무관하게 영구적으로 사용할 수 있음
     - 외부 저장소가 따로 있어야 해서 비용 고려
+
 <img width="528" alt="image" src="https://github.com/junodevv/junodevv.github.io/assets/126752196/d438c0bb-9903-4fcb-b42e-7490bd7186d6">
 
 ## emptyDir(실습) 임시 볼륨 마운트 후 데이터 읽고 쓰기
@@ -820,3 +825,12 @@ cat index.html
 ```
 
 사진넣기
+
+----
+
+# 끝
+
+----
+
+## reference
+[교수님 강의 및 블로그, hull.kr](https://hull.kr/cloud/28)
