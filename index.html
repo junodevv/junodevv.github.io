@@ -8,7 +8,7 @@ title: "Junodevv Blog"
             <a href="/post.html">more</a>
         </div>
         <ul class="list-style">
-            {% for post in site.posts limit: 3 %}
+            {% for post in site.posts limit: 5 %}
                 <li>
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <p>{{ post.excerpt }} </p>
@@ -25,7 +25,7 @@ title: "Junodevv Blog"
             {% endfor %}
         </ul>
     </div>
-    <hr>
+    <!-- <hr>
     <div class="section-contents">
         <div class="section-contents-title-wrap">
             <h1>AboutMe</h1>
@@ -45,5 +45,5 @@ title: "Junodevv Blog"
             <h1>Project</h1>
             <a href="/project.html">more</a>
         </div>
-    </div>
+    </div> -->
 </div>
