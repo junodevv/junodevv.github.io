@@ -1,12 +1,12 @@
 - name: Home
   link: /
-- name: About
-  link: /about.html
 - name: Post
   link: /post.html
-- name: GitHub
-  link: https://github.com/junodevv
+- name: About
+  link: /about.html
 - name: Project
   link: /project.html
-- name: Staff
-  link: /staff.html
+- name: GitHub
+  link: https://github.com/junodevv
+# - name: Staff
+#   link: /staff.html
