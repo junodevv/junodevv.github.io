@@ -1,4 +1,4 @@
 ---
-name: 회고록
+name: Retrospect
 ---
 회고록
