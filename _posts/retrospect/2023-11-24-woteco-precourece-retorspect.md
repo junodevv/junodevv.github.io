@@ -1,6 +1,6 @@
 ---
 title: "우아한 테크코스 - 프리코스 회고"
-category: 회고록
+category: Retrospect
 tags: 회고 우아한-테크-코스 우테코
 ---
 
