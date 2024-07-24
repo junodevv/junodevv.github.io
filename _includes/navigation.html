@@ -6,7 +6,8 @@
 	{% for item in site.data.navigation %}
 		<span class="nav-box">
 			<a href="{{ item.link }}"
-				{% if page.url == item.link %}class="current" {% endif %}>
+				{% if page.url == item.link %}class="current" {% endif %}
+				{% if item.name == "GitHub" %}target="_blank" {% endif %}>
 					{{ item.name }}
 			</a>
 		</span>
