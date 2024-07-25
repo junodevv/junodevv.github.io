@@ -13,7 +13,16 @@
             </h3>
             <ul class="list-style aside-list-style">
                 {% for category in site.categories %}
-                <li><a href="{{ category.url }}" class="a-style-none">{{ category.name }}</a></li>
+                {% assign categoryCount=0 %}
+                {% for post in site.posts %}
+                    {%if post.category == category.name %}
+                        {% assign categoryCount = categoryCount | plus: 1 %}
+                    {%endif%}
+                {% endfor %}
+                <li class="main-category-li">
+                    <a href="{{ category.url }}" class="a-style-none">{{ category.name }}</a>
+                    <a href="{{ category.url }}" class="a-style-none category-count">{{ categoryCount }}</a>
+                </li>
                 {% endfor %}
             </ul>
         </div> 
@@ -25,9 +34,10 @@
                 </a>
             </h3>
             <ul class="list-style aside-list-style">
-                {% for tag in tags%}
+                {% for tag in tags limit: 35%}
                 <li><a href="/tags/#{{tag}}" class="a-style-sky">{{tag}}</a></li>
                 {% endfor %}
+                <li><a href="/tags/" class="a-style-none">more</a></li>
             </ul>
         </div>
     </aside>

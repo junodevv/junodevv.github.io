@@ -130,6 +130,13 @@ hr{
     overflow-y: auto;
     max-height: calc(100vh - 2em - 2em);
 }
+.category-count{
+    color: gray;
+}
+.main-category-li{
+    display:flex; 
+    justify-content: space-between;
+}
 // 프로필 사진 속성
 .profile{
     width: 130px;
