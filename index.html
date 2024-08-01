@@ -4,11 +4,11 @@ title: "Junodevv Blog"
 <div class="section-wrap">
     <div class="section-contents">
         <div class="section-contents-title-wrap">
-            <h1>Latest Posts</h1>
+            <h1>Posts</h1>
             <a href="/post.html">more</a>
         </div>
         <ul class="list-style">
-            {% for post in site.posts limit: 8 %}
+            {% for post in paginator.posts %}
                 <li>
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <p>{{ post.excerpt }} </p>
@@ -26,25 +26,24 @@ title: "Junodevv Blog"
             {% endfor %}
         </ul>
     </div>
-    <!-- <hr>
-    <div class="section-contents">
-        <div class="section-contents-title-wrap">
-            <h1>AboutMe</h1>
-            <a href="/about.html">more</a>
-        </div>
+    
+    <!-- Pagination links -->
+    <div class="pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="previous">
+            Previous
+        </a>
+        {% else %}
+        <span class="previous">Previous</span>
+        {% endif %}
+        <span class="page_number ">
+        Page: {{ paginator.page }} of {{ paginator.total_pages }}
+        </span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+        {% else %}
+        <span class="next ">Next</span>
+        {% endif %}
     </div>
-    <hr>
-    <div class="section-contents">
-        <div class="section-contents-title-wrap">
-            <a href="https://github.com/junodevv" class="a-style-none"><h1>GitHub</h1></a>
-            <a href="https://github.com/junodevv">보러가기</a>
-        </div>
-    </div>
-    <hr>
-    <div class="section-contents">
-        <div class="section-contents-title-wrap">
-            <h1>Project</h1>
-            <a href="/project.html">more</a>
-        </div>
-    </div> -->
+    
 </div>
