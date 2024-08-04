@@ -119,11 +119,13 @@ hr{
     width: 98%
 }
 .main-wrap{
-    display: flex;
     padding: 8px;
+    display: flex;
+    justify-content: space-between;
 }
 .main-aside{
     width: 150px;
+    padding: 0px 15px 0px 10px;
 }
 // 카테고리 속성 설정
 .main-aside-category{
@@ -145,13 +147,17 @@ hr{
 
 //section
 section{
-    margin-left: 8px;
+    margin-left: 15px;
     overflow-x: hidden;
     width: 70%;
+}
+.section-wrap{
+    flex-grow: 1;
 }
 .section-contents{
     width: 60vw;
     height: auto;
+    
 }
 .section-contents-title-wrap{
     display: flex;
