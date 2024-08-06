@@ -1,0 +1,21 @@
+code{
+    font-family: monospace;
+    color: rgb(0, 162, 255);
+    background-color: #f6f8fa;
+    border-radius: 5px;
+}
+h1{
+    font-size: 1.7em;
+}
+
+// 인용블록 css 지정하기 <blockquote> 
+blockquote{
+    display: block;
+    border-left: 4px solid #CEE3F6;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    background-color: #ecf1f7;
+    padding: 1rem 1rem 1rem 1rem;
+    margin-inline-start: 1em; // 왼쪽 margin(default== 40px)
+    margin-inline-end: 0px;
+}

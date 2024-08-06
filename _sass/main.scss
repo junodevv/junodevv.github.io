@@ -27,16 +27,6 @@ body {
 .list-style{
     list-style-type: none;
 }
-// 인용블록 css 지정하기 <blockquote> 
-blockquote{
-    display: block;
-    border-left: 4px solid #CEE3F6;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    background-color: #ecf1f7;
-    padding: 1rem 1rem 1rem 2rem;
-    margin-inline-start: 1em; // 왼쪽 margin(default== 40px)
-}
 .a-style-sky{
     text-decoration: none;
     color: #578aba;
