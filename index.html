@@ -9,7 +9,7 @@ title: "Junodevv Blog"
         </div>
         <ul class="list-style">
             {% for post in paginator.posts %}
-                <li>
+                <li class="post-style">
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <p>{{ post.excerpt }} </p>
                     <p>
@@ -22,7 +22,7 @@ title: "Junodevv Blog"
                         {% endif %}
                     </p>
                 </li>
-                <hr>
+                <!-- <hr> -->
             {% endfor %}
         </ul>
     </div>

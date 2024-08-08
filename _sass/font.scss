@@ -1,3 +1,17 @@
+// 글자색
+.text-red{
+    color:red;
+}
+.text-gray{
+    color:gray;
+}
+.text-blue{
+    color:rgb(75, 75, 237);
+}
+.text-impact-sky{
+    background-color: #CEE3F6;
+}
+
 code{
     font-family: monospace;
     color: rgb(0, 162, 255);
@@ -7,7 +21,6 @@ code{
 h1{
     font-size: 1.7em;
 }
-
 // 인용블록 css 지정하기 <blockquote> 
 blockquote{
     display: block;
@@ -19,3 +32,8 @@ blockquote{
     margin-inline-start: 1em; // 왼쪽 margin(default== 40px)
     margin-inline-end: 0px;
 }
+
+ul > li > h2 > a{
+    text-decoration: none;
+}
+
