@@ -193,7 +193,11 @@ class CartServiceTest {
 - `./gradlew clean test --tests CartServiceTest`로 테스트코드만 빌드 했을때 보통 5초가 소요되었다.<br>
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/99b122e8-617f-48a7-bd98-f0098a3c906c">
 
-- 5번 실행했을떄 5s, 5s, 5s, 4s, 5s 로 <b class="text-red">평균 4.8초</b>가 걸렸다.
+- 5번 실행했을 때 5s, 5s, 5s, 4s, 5s 로 <b class="text-red">평균 4.8초</b>가 걸렸다.
+
+|실행 회차|1회차|2회차|3회차|4회차|5회차|평균|
+|-------|----|----|---|----|----|---|
+|테스트 실행 속도(초,s)|5|5|5|4|5|4.8|
 
 # 2. 개선된 코드(Mockito, CartServiceTestMock)
 ```java
@@ -434,12 +438,16 @@ class CartServiceTestMock {
 - `./gradlew clean test --tests CartServiceTestMock`로 테스트코드만 빌드 했을때 보통 2초가 소요되었다.<br>
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/3b9e351e-83d7-46d3-8d49-deabcd7d6012">
 
-- 5번 실행했을떄 2s, 1s, 2s, 2s, 2s 로 <b class="text-red">평균 1.8초</b>가 걸렸다.
+- 5번 실행했을때 2s, 1s, 2s, 2s, 2s 로 <b class="text-red">평균 1.8초</b>가 걸렸다.
+
+|실행 회차|1회차|2회차|3회차|4회차|5회차|평균|
+|-------|----|----|---|----|----|---|
+|테스트 실행 속도(초,s)|2|1|2|2|2|1.8|
 
 # 3. 결론
 - SpringBootTest는 18개의 단위테스트를 5회 실행했을 때 평균 4.8초의 시간이 걸렸다.
 - Mock객체를 이용한 테스트는 18개의 단위테스트를 5회 실행했을 때 평균 1.8초의 시간이 걸렸다.
-- 약 Mock객체를 활용한 테스트의 속도가 62.5%정도 빠르다.
+- Mock객체를 활용한 테스트의 속도가 약 62.5%정도 빠르다.
 
 ### 내생각
 테스트코드를 작성하면서도 느꼈지만 확실히 Mock객체를 활용하는 테스트가 빠른것을 알 수 있다.<br>
