@@ -190,8 +190,9 @@ class CartServiceTest {
 - SpringBootTest로 <b class="text-red">총 21개의 단위테스트</b>가 존재
     - 단 테스트시에는 단위테스트의 갯수를 맞추기 위해 "상품 수량 변경 예외 테스트"는 주석처리후 진행
 - 더미 데이터가 변경되면서 이전에는 성공하던 테스트들이 실패하는 경우도 있어 코드의 수정이 필요했다. 즉 더미데이터에 따라 테스트의 결과가 달라진다는 것이다.
-- `./gradlew clean test --tests CartServiceTest`로 테스트코드만 빌드 했을때 보통 5초가 소요되었다.
+- `./gradlew clean test --tests CartServiceTest`로 테스트코드만 빌드 했을때 보통 5초가 소요되었다.<br>
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/99b122e8-617f-48a7-bd98-f0098a3c906c">
+
 - 5번 실행했을떄 5s, 5s, 5s, 4s, 5s 로 <b class="text-red">평균 4.8초</b>가 걸렸다.
 
 # 2. 개선된 코드(Mockito, CartServiceTestMock)
@@ -430,8 +431,9 @@ class CartServiceTestMock {
 - Mock객체를 이용한 테스트로 <b class="text-red">총 19개의 단위테스트</b> 존재
     - 단 테스트시에는 단위테스트의 갯수를 맞추기 위해 "상품 수량 변경 예외 테스트"는 주석처리후 진행
 - 해당 코드 작성후 더미데이터의 변화가 있었지만 계속해서 성공하는 결과를 가져온다.
-- `./gradlew clean test --tests CartServiceTestMock`로 테스트코드만 빌드 했을때 보통 2초가 소요되었다.
+- `./gradlew clean test --tests CartServiceTestMock`로 테스트코드만 빌드 했을때 보통 2초가 소요되었다.<br>
 <img width="180" alt="image" src="https://github.com/user-attachments/assets/3b9e351e-83d7-46d3-8d49-deabcd7d6012">
+
 - 5번 실행했을떄 2s, 1s, 2s, 2s, 2s 로 <b class="text-red">평균 1.8초</b>가 걸렸다.
 
 # 3. 결론
