@@ -7,7 +7,7 @@
 		<span class="nav-box">
 			<a href="{{ item.link }}"
 				{% if page.url == item.link %}class="current" {% endif %}
-				{% if item.name == "GitHub" %}target="_blank" {% endif %}>
+				{% if item.name != "Home" %}target="_blank" {% endif %}>
 					{{ item.name }}
 			</a>
 		</span>

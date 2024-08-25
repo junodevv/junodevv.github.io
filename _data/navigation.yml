@@ -3,9 +3,9 @@
 # - name: Post
 #   link: /post.html
 - name: About
-  link: /about.html
-- name: Project
-  link: /project.html
+  link: https://leejuno-portfolio-opcd240.gamma.site/
+# - name: Project
+#   link: https://leejuno-portfolio-opcd240.gamma.site/#card-iod74st35enxxwy
 - name: GitHub
   link: https://github.com/junodevv
 # - name: Staff
