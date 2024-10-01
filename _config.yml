@@ -35,3 +35,7 @@ highlighter: rouge
 # 페이지네이션
 paginate: 8
 paginate_path: "/page:num"
+
+# 빌드시 제외
+exclude:
+  - docs/
