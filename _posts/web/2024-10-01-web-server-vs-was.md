@@ -3,7 +3,7 @@ title: "[WEB] Web Server와 WAS"
 category: Web
 tags: WEB Web-Server WAS Web-Application-Server 면접대비
 ---
-면접대비하다가 리마인드하게된 Web Server와 WAS(Web Application Server)
+최근 리마인드하게된 Web Server와 WAS(Web Application Server)
 
 ---
 

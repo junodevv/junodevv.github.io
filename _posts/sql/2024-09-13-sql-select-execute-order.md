@@ -3,7 +3,7 @@ title: "[SQL] SELECT 쿼리의 실행순서"
 category: SQL
 tags: sql
 ---
-면접에서 대답못해 공부한 SELECT쿼리의 실행순서
+SELECT 쿼리의 실행순서
 
 ---
 기술면접에서 SELECT 쿼리의 실행순서를 질문 받았는데 대답하지 못했다.<br>
